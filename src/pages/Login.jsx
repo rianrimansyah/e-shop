@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Input = ({ children, type, value, onChange, placeholder }) => {
   return (
@@ -49,12 +50,14 @@ const Inputan = ({ email, setEmail, password, setPassword }) => {
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const masuk = () => {
     if (email === '' || password === "") {
       alert('Email dan password harus diisi!');
     } else if (email === 'admin@gmail.com' && password === '123') {
       alert('Login berhasil!');
+      navigate('/home');
     } else {
       alert('Email atau password salah!');
     }
